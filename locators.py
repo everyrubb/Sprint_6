@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
-class LocatorsPage():
 
+class LocatorsPage():
     "Я знаю, что ревьюверы хотят в виде констант, но я сделала так. Для меня это более удобный и читабельный вариант"
 
     @property
@@ -116,3 +116,53 @@ class LocatorsPage():
     def input_dropdown_rental_period(self):
         """Календарь выбора даты в форме заказа"""
         return By.CLASS_NAME, "Dropdown-control"
+
+    @property
+    def menu_dropdown_rental_period(self):
+        """Календарь выбора даты в форме заказа"""
+        return By.CLASS_NAME, "Dropdown-menu"
+
+    @property
+    def select_dropdown_rental_period(self):
+        """Выбор варианта срока аренд в меню в форме заказа"""
+        return By.XPATH, "//div[@class='Dropdown-option' and text()='двое суток']"
+
+    @property
+    def input_select_rental_period(self):
+        """Выбор варианта срока аренд в меню в форме заказа"""
+        return By.XPATH, "//div[contains(@class, 'is-selected') and text()='двое суток']"
+
+    @property
+    def checkbox_color(self):
+        """Выбор варианта срока аренд в меню в форме заказа"""
+        return By.XPATH, "//label[text()='чёрный жемчуг']"
+
+    @property
+    def select_checkbox_color(self):
+        """Выбор варианта срока аренд в меню в форме заказа"""
+        return By.XPATH, "//div[contains(@class, 'FilledContainer')]"
+
+    @property
+    def input_comment(self):
+        """Инпут комментарий курьеру в форме оформления заказа"""
+        return By.XPATH, "//div[@class='Input_InputContainer__3NykH']//input[contains(@placeholder, 'Комментарий для курьера')]"
+
+    @property
+    def order_final_button(self):
+        """Кнопка «Далее» на странице заказа"""
+        return By.XPATH, "//div[@class = 'Order_Buttons__1xGrp']/button[text()='Заказать']"
+
+    @property
+    def order_modal_header(self):
+        """Кнопка «Далее» на странице заказа"""
+        return By.XPATH, "//div[@class = 'Order_ModalHeader__3FDaJ'and text()='Хотите оформить заказ?']"
+
+    @property
+    def order_modal_sure_button(self):
+        """Кнопка «Далее» на странице заказа"""
+        return By.XPATH, "//div[@class = 'Order_Buttons__1xGrp']/button[text()='Да']"
+
+    @property
+    def order_modal_header_successfully_placed(self):
+        """Кнопка «Далее» на странице заказа"""
+        return By.XPATH, "//div[@class = 'Order_ModalHeader__3FDaJ'and text()='Заказ оформлен']"

@@ -11,3 +11,4 @@ class Const:
     SURNAME = 'Черенкова'
     ADDRESS = 'Черенкова'
     PHONE = '79997220202'
+    COMMENT = 'Оставьте у двери'

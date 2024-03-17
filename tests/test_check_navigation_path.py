@@ -1,12 +1,3 @@
-import allure
-import pytest
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-from const import Const
-
-
 #class TestNavigationPath:
 
     #def test_check_open_main_page_tap_logo_scooter(self, page, driver):
