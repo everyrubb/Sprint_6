@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+
 from locators import LocatorsPage
 
 

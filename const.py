@@ -8,3 +8,6 @@ class Const:
     EMAIL = 'cherenkova_7@yandex.ru'
     PASSWORD = 'cherenkova_7'
     NAME = 'Антонина'
+    SURNAME = 'Черенкова'
+    ADDRESS = 'Черенкова'
+    PHONE = '79997220202'

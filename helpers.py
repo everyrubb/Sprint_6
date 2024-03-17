@@ -7,5 +7,3 @@ def generate_random_email(domain="ya.ru", username_prefix="cherenkova_06"):
     email = f"{login}@{domain}"
     return email
 
-
-
