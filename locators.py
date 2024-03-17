@@ -166,3 +166,18 @@ class LocatorsPage():
     def order_modal_header_successfully_placed(self):
         """Кнопка «Далее» на странице заказа"""
         return By.XPATH, "//div[@class = 'Order_ModalHeader__3FDaJ'and text()='Заказ оформлен']"
+
+    @property
+    def logo_scooter(self):
+        """Кнопка «Далее» на странице заказа"""
+        return By.CLASS_NAME, "Header_LogoScooter__3lsAR"
+
+    @property
+    def logo_yandex(self):
+        """Кнопка «Далее» на странице заказа"""
+        return By.CLASS_NAME, "Header_LogoYandex__3TSOI"
+
+    @property
+    def header_yandex_dzen(self):
+        """Кнопка «Далее» на странице заказа"""
+        return By.XPATH, "//header[@id='dzen-header']"
