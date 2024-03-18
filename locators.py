@@ -67,15 +67,13 @@ class LocatorsPage():
         """Выпадающий список метро в форме оформления заказа"""
         return By.CLASS_NAME, "select-search__options"
 
-    @property
-    def select_station_subway(self):
+    def select_station_subway(self, station):
         """Выбор метро в выпадающем листе на странице оформления заказа"""
-        return By.XPATH, "//li[@class='select-search__row']//button[.//div[contains(@class, 'Order_Text__2broi') and text()='Бульвар Рокоссовского']]"
+        return By.XPATH, f"//li[@class='select-search__row']//button[.//div[contains(@class, 'Order_Text__2broi') and text()='{station}']]"
 
-    @property
-    def complete_station(self):
+    def complete_station(self, station):
         """Выбор метро в выпадающем листе на странице оформления заказа"""
-        return By.XPATH, "//input[@value='Бульвар Рокоссовского']"
+        return By.XPATH, f"//input[@value='{station}']"
 
     @property
     def input_telephone(self):

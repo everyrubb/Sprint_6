@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from const import Const
+import pytest
 
 
 class TestChekoutPath:
@@ -37,7 +38,13 @@ class TestChekoutPath:
                 WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.order_header))
                 assert Const.REGISTRATION_PAGE == driver.current_url
 
-    def test_check_fill_out_order_form(self, page, driver):
+    person_data = [
+            ['Антонина', 'Иванова', 'Москва', 'Бульвар Рокоссовского', '79997220202', '15', 'двое суток', 'чёрный жемчуг', 'Оставьте у двери'],
+            ['Василий', 'Смирнова', 'Саратов', 'Черкизовская', '79957220202', '19', 'четверо суток', 'серая безысходность', 'Оставьте у охраны'],
+        ]
+
+    @pytest.mark.parametrize("name, surname, address, station, phone, date_piker, rental_period, color, comment", person_data)
+    def test_check_fill_out_order_form(self, page, driver, name, surname, address, station, phone, date_piker, rental_period, color, comment):
         #Здесь проверяем весь флоу заполнения заказа без методов
         with allure.step("Предусловие. Открываем страницу регистрации (https://qa-scooter.praktikum-services.ru/order) «Яндекс.Самокат»"):
             with allure.step("Пользователь находится на странице регистрации «Яндекс.Самоката»"):
@@ -45,22 +52,22 @@ class TestChekoutPath:
                 WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.input_name))
         with allure.step("Step 1. Вводим имя в форму заказа»"):
             with allure.step("Пользователь ввел имя в форму заказа. Оно отобразилось в поле ввода"):
-                driver.find_element(*page.input_name).send_keys(Const.NAME)
+                driver.find_element(*page.input_name).send_keys(name)
         with allure.step("Step 2. Вводим фамилию в форму заказа»"):
             with allure.step("Пользователь ввел фамилию в форму заказа. Оно отобразилось в поле ввода"):
-                driver.find_element(*page.input_surname).send_keys(Const.SURNAME)
+                driver.find_element(*page.input_surname).send_keys(surname)
         with allure.step("Step 3. Вводим адрес в форму заказа»"):
             with allure.step("Пользователь ввел адрес в форму заказа. Оно отобразилось в поле ввода"):
-                driver.find_element(*page.input_address).send_keys(Const.ADDRESS)
+                driver.find_element(*page.input_address).send_keys(address)
         with allure.step("Step 4. Выбираем станцию метро из выпадающего списка"):
             with allure.step("Пользователь выбрал станцию. Оно отобразилось в поле ввода"):
                 driver.find_element(*page.select_subway).click()
-                WebDriverWait(driver, 3).until(EC.presence_of_element_located(page.select_station_subway))
-                driver.find_element(*page.select_station_subway).click()
-                WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.complete_station))
+                WebDriverWait(driver, 3).until(EC.presence_of_element_located(page.select_station_subway(station)))
+                driver.find_element(*page.select_station_subway(station)).click()
+                WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.complete_station(station)))
         with allure.step("Step 5. Вводим номер телефона"):
             with allure.step("Пользователь выбрал станцию. Оно отобразилось в поле ввода"):
-                driver.find_element(*page.input_telephone).send_keys(Const.PHONE)
+                driver.find_element(*page.input_telephone).send_keys(phone)
         with allure.step("Step 6. Нажимаем кнопку «Далее»"):
             with allure.step("Пользователь перешел на следующую страницу оформления заказа"):
                 driver.find_element(*page.order_next_button).click()
@@ -75,10 +82,10 @@ class TestChekoutPath:
             with allure.step("Пользователь выбрал срок аренды. Срок отобразился в инпуте"):
                 driver.find_element(*page.input_dropdown_rental_period).click()
                 WebDriverWait(driver, 3).until(EC.presence_of_element_located(page.menu_dropdown_rental_period))
-        with allure.step("Step 9. Выбираем цвет самоката "):
-            with allure.step("Пользователь выбрал цвет самоката. Чекбокс отметился выбранным"):
                 driver.find_element(*page.select_dropdown_rental_period).click()
                 WebDriverWait(driver, 3).until(EC.presence_of_element_located(page.input_select_rental_period))
+        with allure.step("Step 9. Выбираем цвет самоката "):
+            with allure.step("Пользователь выбрал цвет самоката. Чекбокс отметился выбранным"):
                 driver.find_element(*page.checkbox_color).click()
                 WebDriverWait(driver, 3).until(EC.visibility_of_element_located(page.select_checkbox_color))
         with allure.step("Step 10. Добавляем комментарий курьеру "):
