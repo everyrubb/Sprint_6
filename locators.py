@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class LocatorsPage():
+
     "Я знаю, что ревьюверы хотят в виде констант, но я сделала так. Для меня это более удобный и читабельный вариант"
 
     @property
@@ -72,7 +73,7 @@ class LocatorsPage():
         return By.XPATH, f"//li[@class='select-search__row']//button[.//div[contains(@class, 'Order_Text__2broi') and text()='{station}']]"
 
     def complete_station(self, station):
-        """Выбор метро в выпадающем листе на странице оформления заказа"""
+        """Выбранное метро в выпадающем листе на странице оформления заказа"""
         return By.XPATH, f"//input[@value='{station}']"
 
     @property
@@ -92,27 +93,27 @@ class LocatorsPage():
 
     @property
     def input_data_piker(self):
-        """Календарь выбора даты в форме заказа"""
+        """Инпут выбора даты в форме заказа"""
         return By.CLASS_NAME, "react-datepicker__input-container"
 
     @property
     def order_data_piker(self):
-        """Календарь выбора даты в форме заказа"""
+        """Календарь в форме заказа"""
         return By.CLASS_NAME, "react-datepicker"
 
 
     def select_data_on_piker(self, date_piker):
-        """Календарь выбора даты в форме заказа"""
+        """Выбранная дата в календаре в форме заказа"""
         return By.XPATH, f"//div[contains(@class, 'react-datepicker')]//div[contains(@class, 'react-datepicker__day') and text()='{date_piker}']"
 
 
     def select_data_in_input(self, date_piker):
-        """Календарь выбора даты в форме заказа"""
+        """Выбранная дата дата в форме заказа"""
         return By.XPATH, f"//div[@class='react-datepicker__input-container']//input[contains(@value, '{date_piker}')]"
 
     @property
     def input_dropdown_rental_period(self):
-        """Календарь выбора даты в форме заказа"""
+        """Инпут выбора даты в форме заказа"""
         return By.CLASS_NAME, "Dropdown-control"
 
     @property
@@ -121,20 +122,20 @@ class LocatorsPage():
         return By.CLASS_NAME, "Dropdown-menu"
 
     def select_dropdown_rental_period(self, rental_period):
-        """Выбор варианта срока аренд в меню в форме заказа"""
+        """Выбор варианта срока аренды в меню в форме заказа"""
         return By.XPATH, f"//div[@class='Dropdown-option' and text()='{rental_period}']"
 
     def input_select_rental_period(self, rental_period):
-        """Выбор варианта срока аренд в меню в форме заказа"""
+        """Выбор варианта срока аренды в меню в форме заказа"""
         return By.XPATH, f"//div[contains(@class, 'is-selected') and text()='{rental_period}']"
 
     def checkbox_color(self, color):
-        """Выбор варианта срока аренд в меню в форме заказа"""
+        """Выбор цветав меню в форме заказа"""
         return By.XPATH, f"//label[text()='{color}']"
 
     @property
     def select_checkbox_color(self):
-        """Выбор варианта срока аренд в меню в форме заказа"""
+        """Выбранный цвет в форме заказа"""
         return By.XPATH, "//div[contains(@class, 'FilledContainer')]"
 
     @property
@@ -144,35 +145,35 @@ class LocatorsPage():
 
     @property
     def order_final_button(self):
-        """Кнопка «Далее» на странице заказа"""
+        """Кнопка «Заказать» в модальном окне"""
         return By.XPATH, "//div[@class = 'Order_Buttons__1xGrp']/button[text()='Заказать']"
 
     @property
     def order_modal_header(self):
-        """Кнопка «Далее» на странице заказа"""
+        """Хедер «Хотите оформить заказ» в модальном окне"""
         return By.XPATH, "//div[@class = 'Order_ModalHeader__3FDaJ'and text()='Хотите оформить заказ?']"
 
     @property
     def order_modal_sure_button(self):
-        """Кнопка «Далее» на странице заказа"""
+        """Кнопка «Да» в модальном окне"""
         return By.XPATH, "//div[@class = 'Order_Buttons__1xGrp']/button[text()='Да']"
 
     @property
     def order_modal_header_successfully_placed(self):
-        """Кнопка «Далее» на странице заказа"""
+        """Название «Заказ оформлен» в модельном окне"""
         return By.XPATH, "//div[@class = 'Order_ModalHeader__3FDaJ'and text()='Заказ оформлен']"
 
     @property
     def logo_scooter(self):
-        """Кнопка «Далее» на странице заказа"""
+        """Логотип «Самокат» В Яндекс Самокате"""
         return By.CLASS_NAME, "Header_LogoScooter__3lsAR"
 
     @property
     def logo_yandex(self):
-        """Кнопка «Далее» на странице заказа"""
+        """Логотип Яндекса в Яндекс.Самокате"""
         return By.CLASS_NAME, "Header_LogoYandex__3TSOI"
 
     @property
     def header_yandex_dzen(self):
-        """Кнопка «Далее» на странице заказа"""
+        """Хедер Яндекс Дзена"""
         return By.XPATH, "//header[@id='dzen-header']"
