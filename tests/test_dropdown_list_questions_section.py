@@ -29,20 +29,20 @@ class TestDropDownSection:
         with allure.step("Step 1. Открываем сайт (https://qa-scooter.praktikum-services.ru/) «Яндекс.Самокат»"):
             with allure.step("Пользователь находится на главной странице «Яндекс.Самоката»"):
                 driver.get(Const.MAIN_PAGE)
-                WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.main_page))
+                WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.main.main_page))
         with allure.step("Step 2. Скролим до выпадающего списка «Вопросы о важном»"):
             with allure.step("На экране отображается список вопросов в виде аккордеон»"):
-                element = driver.find_element(*page.dropdown_section)
+                element = driver.find_element(*page.main.dropdown_section)
                 driver.execute_script("arguments[0].scrollIntoView();", element)
-                WebDriverWait(driver, 3).until(EC.element_to_be_clickable(page.dropdown_section))
-                current_question = driver.find_element(*page.dropdown_element_question(id))
+                WebDriverWait(driver, 3).until(EC.element_to_be_clickable(page.main.dropdown_section))
+                current_question = driver.find_element(*page.main.dropdown_element_question(id))
                 WebDriverWait(driver, 10).until(expected_conditions.visibility_of(current_question))
         with allure.step(f"Step 3. Тапнуть на вопрос {question}"):
             with allure.step(f"Открылся ответ {answer}"):
-                driver.find_element(*page.dropdown_element_question(id)).click()
-                WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((page.open_dropdown_section)))
-                current_answer = driver.find_element(*page.dropdown_element_answer(id))
-                WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((page.dropdown_element_answer(id))))
+                driver.find_element(*page.main.dropdown_element_question(id)).click()
+                WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((page.main.open_dropdown_section)))
+                current_answer = driver.find_element(*page.main.dropdown_element_answer(id))
+                WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((page.main.dropdown_element_answer(id))))
         with allure.step("Step 4. Содержание вопроса и ответа соответствует требованиям заказчика"):
             with allure.step(f"Вопрос {question}"):
                 assert question == current_question.text

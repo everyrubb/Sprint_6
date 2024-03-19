@@ -1,8 +1,7 @@
 import pytest
 from selenium import webdriver
 
-from authorization_methods import TestAuthMethod
-from locators import LocatorsPage
+from page import Page
 
 
 @pytest.fixture(scope='function')
@@ -14,10 +13,4 @@ def driver():
 
 @pytest.fixture(scope='function')
 def page():
-    page = LocatorsPage()
-    return page
-
-@pytest.fixture(scope='function')
-def methods():
-    methods = TestAuthMethod()
-    return methods
+    return Page()
