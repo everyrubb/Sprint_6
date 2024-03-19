@@ -17,7 +17,7 @@ class TestChekoutPath:
                 driver.get(Const.MAIN_PAGE)
                 WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.main_page))
         with allure.step("Step 1. Кликаем на кнопку «Заказать в хедере сайта"):
-            with allure.step("Step 1. Открылась форма оформления заказа «Для кого самокат»"):
+            with allure.step("Открылась форма оформления заказа «Для кого самокат»"):
                 driver.find_element(*page.order_button).click()
                 WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(page.order_header))
                 assert Const.REGISTRATION_PAGE == driver.current_url
