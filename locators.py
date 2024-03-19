@@ -100,15 +100,15 @@ class LocatorsPage():
         """Календарь выбора даты в форме заказа"""
         return By.CLASS_NAME, "react-datepicker"
 
-    @property
-    def select_data_on_piker(self):
-        """Календарь выбора даты в форме заказа"""
-        return By.XPATH, "//div[contains(@class, 'react-datepicker')]//div[contains(@class, 'react-datepicker__day') and text()='15']"
 
-    @property
-    def select_data_in_input(self):
+    def select_data_on_piker(self, date_piker):
         """Календарь выбора даты в форме заказа"""
-        return By.XPATH, "//div[@class='react-datepicker__input-container']//input[@value='15.03.2024']"
+        return By.XPATH, f"//div[contains(@class, 'react-datepicker')]//div[contains(@class, 'react-datepicker__day') and text()='{date_piker}']"
+
+
+    def select_data_in_input(self, date_piker):
+        """Календарь выбора даты в форме заказа"""
+        return By.XPATH, f"//div[@class='react-datepicker__input-container']//input[contains(@value, '{date_piker}')]"
 
     @property
     def input_dropdown_rental_period(self):
@@ -120,20 +120,17 @@ class LocatorsPage():
         """Календарь выбора даты в форме заказа"""
         return By.CLASS_NAME, "Dropdown-menu"
 
-    @property
-    def select_dropdown_rental_period(self):
+    def select_dropdown_rental_period(self, rental_period):
         """Выбор варианта срока аренд в меню в форме заказа"""
-        return By.XPATH, "//div[@class='Dropdown-option' and text()='двое суток']"
+        return By.XPATH, f"//div[@class='Dropdown-option' and text()='{rental_period}']"
 
-    @property
-    def input_select_rental_period(self):
+    def input_select_rental_period(self, rental_period):
         """Выбор варианта срока аренд в меню в форме заказа"""
-        return By.XPATH, "//div[contains(@class, 'is-selected') and text()='двое суток']"
+        return By.XPATH, f"//div[contains(@class, 'is-selected') and text()='{rental_period}']"
 
-    @property
-    def checkbox_color(self):
+    def checkbox_color(self, color):
         """Выбор варианта срока аренд в меню в форме заказа"""
-        return By.XPATH, "//label[text()='чёрный жемчуг']"
+        return By.XPATH, f"//label[text()='{color}']"
 
     @property
     def select_checkbox_color(self):
