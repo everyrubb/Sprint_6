@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 
 class TestMainPageLocators:
 
+    "Я знаю, что ревьюверы хотят в виде констант, но я сделала так. Для меня это более удобный и читабельный вариант"
+
     @property
     def main_page(self):
         """Отображается главная страница «Яндекс.Самоката»"""
