@@ -12,5 +12,5 @@ def driver():
     driver.quit()
 
 @pytest.fixture(scope='function')
-def page():
-    return Page()
+def page(driver):
+    return Page(driver)
