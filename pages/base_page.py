@@ -45,7 +45,3 @@ class BasePage:
 
     def send_keys(self, locator, text):
         self.find_element(locator).send_keys(text)
-
-    @property
-    def main_locators(self):
-        return MainPageLocators()
