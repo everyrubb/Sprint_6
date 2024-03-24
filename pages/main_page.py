@@ -1,13 +1,10 @@
 import allure
 
-import page
 from const import Const
 from locators.dzen_main_page_locators import DzenMainPageLocators
 from locators.main_page_locators import MainPageLocators
 from locators.order_page_locators import OrderPageLocators
 from pages.base_page import BasePage
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class MainPage(BasePage):
@@ -15,7 +12,7 @@ class MainPage(BasePage):
     @allure.step("Открываем сайт (https://qa-scooter.praktikum-services.ru/) «Яндекс.Самокат»")
     def open_main_page(self):
         self.open_url(Const.MAIN_PAGE)
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(self.main_locators.MAIN_PAGE))
+        self.wait_element_visibility_of_element_located(MainPageLocators.MAIN_PAGE)
 
     @allure.step("Скролим до выпадающего списка «Вопросы о важном»")
     def scroll_to_dropdown_section(self):

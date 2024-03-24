@@ -19,10 +19,10 @@ class TestDropDownSection:
         ]
     )
 
-    def test_check_question_in_dropdown_list(self, page, question, answer, id):
-        page.main_page.open_main_page()
-        page.main_page.scroll_to_dropdown_section()
-        current_question = page.main_page.find_dropdown_question(id)
-        current_answer = page.main_page.tap_on_question(id)
+    def test_check_question_in_dropdown_list(self, main_page, question, answer, id):
+        main_page.open_main_page()
+        main_page.scroll_to_dropdown_section()
+        current_question = main_page.find_dropdown_question(id)
+        current_answer = main_page.tap_on_question(id)
         assert question == current_question.text
         assert answer == current_answer.text
